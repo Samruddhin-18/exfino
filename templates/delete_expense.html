@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Expense — Spendly{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-section">
+    <div class="dashboard-container">
+
+        <h1 class="dashboard-heading">Delete Expense</h1>
+
+        <div class="dashboard-card">
+            <p class="delete-expense-warning">Are you sure you want to delete this expense? This action cannot be undone.</p>
+
+            <div class="delete-expense-summary">
+                <div class="delete-expense-row">
+                    <span class="delete-expense-label">Date</span>
+                    <span class="delete-expense-value">{{ expense.date }}</span>
+                </div>
+                <div class="delete-expense-row">
+                    <span class="delete-expense-label">Category</span>
+                    <span class="delete-expense-value">
+                        <span class="category-badge category-badge-{{ expense.category|lower }}">{{ expense.category }}</span>
+                    </span>
+                </div>
+                <div class="delete-expense-row">
+                    <span class="delete-expense-label">Amount</span>
+                    <span class="delete-expense-value">₹{{ "%.2f"|format(expense.amount) }}</span>
+                </div>
+                <div class="delete-expense-row">
+                    <span class="delete-expense-label">Description</span>
+                    <span class="delete-expense-value">{{ expense.description or "—" }}</span>
+                </div>
+            </div>
+
+            <form method="POST" action="{{ url_for('delete_expense_route', id=expense.id) }}" class="delete-expense-actions">
+                <a href="{{ url_for('profile') }}" class="btn-secondary">Cancel</a>
+                <button type="submit" class="btn-submit btn-danger">Delete Expense</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

@@ -514,6 +514,32 @@ a { color: inherit; text-decoration: none; }
 
 .btn-submit:hover { background: var(--accent); }
 
+.btn-danger { background: var(--danger); }
+
+.btn-danger:hover { background: var(--danger); opacity: 0.9; }
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.5rem;
+    background: transparent;
+    color: var(--ink-muted);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover {
+    border-color: var(--ink-muted);
+    color: var(--ink);
+}
+
 .auth-switch {
     text-align: center;
     font-size: 0.875rem;
@@ -575,6 +601,56 @@ a { color: inherit; text-decoration: none; }
     .dashboard-card { padding: 1.75rem; }
     .form-row { grid-template-columns: 1fr; gap: 0; }
     .dashboard-submit { width: 100%; }
+}
+
+.delete-expense-warning {
+    color: var(--ink-soft);
+    margin-bottom: 1.5rem;
+}
+
+.delete-expense-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm);
+    margin-bottom: 2rem;
+}
+
+.delete-expense-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-expense-label {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+}
+
+.delete-expense-value {
+    font-weight: 500;
+    color: var(--ink);
+}
+
+.delete-expense-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.delete-expense-actions .btn-submit {
+    width: auto;
+    margin-top: 0;
+}
+
+@media (max-width: 600px) {
+    .delete-expense-row { flex-direction: column; align-items: flex-start; gap: 0.15rem; }
+    .delete-expense-actions { flex-direction: column-reverse; }
+    .delete-expense-actions .btn-submit,
+    .delete-expense-actions .btn-secondary { width: 100%; }
 }
 
 /* ------------------------------------------------------------------ */
@@ -826,6 +902,22 @@ a { color: inherit; text-decoration: none; }
 
 .profile-table-edit-link:hover {
     color: var(--accent);
+}
+
+.profile-table-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.profile-table-delete-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+    text-decoration: none;
+}
+
+.profile-table-delete-link:hover {
+    color: var(--danger);
 }
 
 .category-badge {
