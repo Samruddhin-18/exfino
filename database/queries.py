@@ -141,6 +141,16 @@ def update_expense(id, user_id, amount, category, date, description):
         db.close()
 
 
+def delete_expense(id, user_id):
+    """Delete an expense owned by user_id. No-op if not owned."""
+    db = get_db()
+    try:
+        db.execute("DELETE FROM expenses WHERE id = ? AND user_id = ?", (id, user_id))
+        db.commit()
+    finally:
+        db.close()
+
+
 def get_category_breakdown(user_id, date_from=None, date_to=None):
     """Return list of dicts (name, amount, pct) per category for user_id,
     ordered by amount descending. pct values are integers summing to exactly 100
