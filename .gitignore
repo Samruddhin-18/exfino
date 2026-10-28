@@ -3,6 +3,7 @@ expense_tracker.db
 spendly.db
 exfino.db
 *.db
+tunnel_url.txt
 __pycache__/
 *.pyc
 *.pyo
