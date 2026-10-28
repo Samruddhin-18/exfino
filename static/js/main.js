@@ -1,24 +1,23 @@
-// main.js — students will add JavaScript here as features are built
+// main.js
 
 (function () {
     var openBtn = document.getElementById('how-it-works-btn');
-    var overlay = document.getElementById('video-modal-overlay');
-    var closeBtn = document.getElementById('video-modal-close');
-    var iframe = document.getElementById('video-modal-iframe');
+    var overlay = document.getElementById('hiw-modal-overlay');
+    var closeBtn = document.getElementById('hiw-modal-close');
 
-    if (!openBtn || !overlay || !closeBtn || !iframe) {
+    if (!openBtn || !overlay || !closeBtn) {
         return;
     }
 
     function openModal(e) {
         e.preventDefault();
-        iframe.src = iframe.dataset.src + '?autoplay=1';
         overlay.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
         overlay.classList.remove('is-open');
-        iframe.src = '';
+        document.body.style.overflow = '';
     }
 
     openBtn.addEventListener('click', openModal);

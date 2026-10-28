@@ -1,11 +1,16 @@
 import os
 import sqlite3
+import warnings
 from datetime import date, datetime
 
+from dotenv import load_dotenv
 from flask import Flask, abort, flash, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from database.db import CATEGORIES, get_db, init_db, seed_db
+# Load environment variables from .env (no-op if file absent)
+load_dotenv()
+
+from database.db import CATEGORIES, get_db, init_db
 from database.queries import (
     create_expense,
     delete_expense,
@@ -18,11 +23,21 @@ from database.queries import (
 )
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "dev-secret-key")
+
+_SECRET_KEY_FALLBACK = "dev-secret-key"
+_secret_key = os.environ.get("SECRET_KEY", _SECRET_KEY_FALLBACK)
+if _secret_key == _SECRET_KEY_FALLBACK:
+    warnings.warn(
+        "\n\n"
+        "  [Exfino] SECRET_KEY is set to the insecure default value.\n"
+        "  Sessions can be forged. Set a strong random key in your .env file:\n"
+        "      SECRET_KEY=$(python -c 'import secrets; print(secrets.token_hex(32))')\n",
+        stacklevel=1,
+    )
+app.secret_key = _secret_key
 
 with app.app_context():
     init_db()
-    seed_db()
 
 
 # ------------------------------------------------------------------ #
@@ -102,7 +117,7 @@ def register():
     session["user_name"] = name
     conn.close()
 
-    return redirect(url_for("landing"))
+    return redirect(url_for("profile"))
 
 
 @app.route("/login", methods=["GET", "POST"])

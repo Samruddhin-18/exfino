@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Spendly — Track Every Rupee{% endblock %}
+{% block title %}Exfino — Track Every Rupee{% endblock %}
 
 {% block content %}
 
@@ -12,11 +12,15 @@
             <span class="hero-title-accent">Know where it goes.</span>
         </h1>
         <p class="hero-subtitle">
-            Spendly helps you log expenses, spot patterns, and stay
+            Exfino helps you log expenses, spot patterns, and stay
             on budget — without the spreadsheet headache.
         </p>
         <div class="hero-actions">
+            {% if not session.user_id %}
             <a href="{{ url_for('register') }}" class="btn-primary">Create free account</a>
+            {% else %}
+            <a href="{{ url_for('profile') }}" class="btn-primary">Go to my profile</a>
+            {% endif %}
             <a href="#" class="btn-primary" id="how-it-works-btn">See how it works</a>
         </div>
     </div>
@@ -91,25 +95,61 @@
 <section class="cta-section">
     <div class="cta-inner">
         <h2 class="cta-title">Ready to take control?</h2>
-        <p class="cta-body">Join thousands of people who track their expenses with Spendly.</p>
+        <p class="cta-body">Join thousands of people who track their expenses with Exfino.</p>
+        {% if not session.user_id %}
         <a href="{{ url_for('register') }}" class="btn-primary">Create free account</a>
+        {% else %}
+        <a href="{{ url_for('profile') }}" class="btn-primary">Go to my profile</a>
+        {% endif %}
     </div>
 </section>
 
-<div class="modal-overlay" id="video-modal-overlay">
-    <div class="modal-box">
-        <button class="modal-close" id="video-modal-close" aria-label="Close">&times;</button>
-        <div class="modal-video-wrap">
-            <iframe
-                id="video-modal-iframe"
-                src=""
-                data-src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="How Spendly works"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
+<div class="modal-overlay" id="hiw-modal-overlay">
+    <div class="hiw-modal-box">
+        <button class="modal-close" id="hiw-modal-close" aria-label="Close">&times;</button>
+
+        <div class="hiw-modal-header">
+            <span class="hiw-modal-badge"><span class="hero-badge-dot"></span>How it works</span>
+            <h2 class="hiw-modal-title">Get started in minutes</h2>
+            <p class="hiw-modal-subtitle">Four simple steps to take control of your spending.</p>
         </div>
+
+        <ol class="hiw-steps">
+            <li class="hiw-step">
+                <div class="hiw-step-num">1</div>
+                <div class="hiw-step-body">
+                    <h3 class="hiw-step-title">Create a free account</h3>
+                    <p class="hiw-step-desc">Sign up with your name and email — no credit card, no subscriptions. Your data stays private and secure.</p>
+                </div>
+            </li>
+            <li class="hiw-step">
+                <div class="hiw-step-num">2</div>
+                <div class="hiw-step-body">
+                    <h3 class="hiw-step-title">Log your expenses</h3>
+                    <p class="hiw-step-desc">Hit <strong>+ Add Expense</strong>, enter the amount, pick a category (Food, Bills, Transport…), choose the date, and optionally add a note. Done in seconds.</p>
+                </div>
+            </li>
+            <li class="hiw-step">
+                <div class="hiw-step-num">3</div>
+                <div class="hiw-step-body">
+                    <h3 class="hiw-step-title">See where your money goes</h3>
+                    <p class="hiw-step-desc">Your profile shows a live summary — total spent, number of transactions, and a category breakdown with progress bars so you can spot patterns instantly.</p>
+                </div>
+            </li>
+            <li class="hiw-step">
+                <div class="hiw-step-num">4</div>
+                <div class="hiw-step-body">
+                    <h3 class="hiw-step-title">Filter by any time period</h3>
+                    <p class="hiw-step-desc">Use the preset buttons (This Month, Last 3 Months…) or pick a custom date range to zoom in on any period and track trends over time.</p>
+                </div>
+            </li>
+        </ol>
+
+        {% if not session.user_id %}
+        <div class="hiw-modal-cta">
+            <a href="{{ url_for('register') }}" class="btn-primary">Create free account</a>
+        </div>
+        {% endif %}
     </div>
 </div>
 
