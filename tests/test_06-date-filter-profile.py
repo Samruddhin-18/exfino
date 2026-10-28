@@ -37,7 +37,7 @@ from database.queries import (
 
 @pytest.fixture
 def temp_db(tmp_path, monkeypatch):
-    db_path = str(tmp_path / "test_spendly.db")
+    db_path = str(tmp_path / "test_exfino.db")
     monkeypatch.setattr(db, "DB_PATH", db_path)
 
     import database.queries as queries
@@ -48,7 +48,7 @@ def temp_db(tmp_path, monkeypatch):
 
     conn = db.get_db()
     user_id = conn.execute(
-        "SELECT id FROM users WHERE email = ?", ("demo@spendly.com",)
+        "SELECT id FROM users WHERE email = ?", ("demo@exfino.com",)
     ).fetchone()["id"]
     conn.close()
 
@@ -60,7 +60,7 @@ def empty_user(temp_db):
     conn = db.get_db()
     cursor = conn.execute(
         "INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)",
-        ("New User", "new@spendly.com", "hash"),
+        ("New User", "new@exfino.com", "hash"),
     )
     conn.commit()
     user_id = cursor.lastrowid
@@ -408,7 +408,7 @@ def test_profile_empty_range_no_exceptions_for_new_user(client):
     conn = db.get_db()
     cursor = conn.execute(
         "INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)",
-        ("No Expenses", "noexp@spendly.com", "hash"),
+        ("No Expenses", "noexp@exfino.com", "hash"),
     )
     conn.commit()
     new_user_id = cursor.lastrowid

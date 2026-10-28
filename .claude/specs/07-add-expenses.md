@@ -3,7 +3,7 @@
 ## Overview
 Step 7 replaces the placeholder `GET /expenses/add` route with a real feature
 that lets a logged-in user record a new expense. This is the first write
-path in Spendly beyond registration — it introduces a form-backed `POST`
+path in exfino beyond registration — it introduces a form-backed `POST`
 route, an insert query in `database/queries.py`, and a dedicated template.
 Once complete, expenses entered here appear immediately in the profile
 page's transaction list, summary stats, and category breakdown (Step 5).

@@ -31,7 +31,7 @@ from database.db import CATEGORIES, init_db, seed_db
 
 @pytest.fixture
 def temp_db(tmp_path, monkeypatch):
-    db_path = str(tmp_path / "test_spendly.db")
+    db_path = str(tmp_path / "test_exfino.db")
     monkeypatch.setattr(db, "DB_PATH", db_path)
 
     import database.queries as queries
@@ -42,7 +42,7 @@ def temp_db(tmp_path, monkeypatch):
 
     conn = db.get_db()
     user_id = conn.execute(
-        "SELECT id FROM users WHERE email = ?", ("demo@spendly.com",)
+        "SELECT id FROM users WHERE email = ?", ("demo@exfino.com",)
     ).fetchone()["id"]
     conn.close()
 

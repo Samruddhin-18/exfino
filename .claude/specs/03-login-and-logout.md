@@ -40,7 +40,7 @@ No new dependencies.
 - Use Flask's `session` for login state, consistent with the registration flow
 
 ## Definition of done
-- [ ] Submitting the login form with the seeded demo credentials (`demo@spendly.com` / `demo123`) logs in and redirects away from `/login`
+- [ ] Submitting the login form with the seeded demo credentials (`demo@exfino.com` / `demo123`) logs in and redirects away from `/login`
 - [ ] Submitting with a wrong password shows a generic error instead of crashing
 - [ ] Submitting with a non-existent email shows the same generic error instead of crashing
 - [ ] Visiting `/logout` after logging in clears the session and redirects to the landing page

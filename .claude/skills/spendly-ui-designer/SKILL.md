@@ -1,12 +1,12 @@
 ---
-name: spendly-ui-designer
-description: "Generate modern, production-ready UI components and pages for Spendly, the personal expense tracker. Automatically trigger when the user mentions designing, creating, or redesigning pages/components for Spendly (e.g., 'design the dashboard page', 'create a transaction card', 'build a category selector', 'improve the budget page'). Outputs clean, responsive HTML + Vanilla CSS + little JS code that matches Spendly's minimalist fintech aesthetic. Always use Spendly's design system: dark green branding (#1a472a), neutral backgrounds (#f3f1ed, #eeebe4), minimal icons, card-based layouts, 8-12-16px spacing scale, rounded corners, and soft shadows. Focus on clarity, usability, and consistency with existing Spendly design."
+name: exfino-ui-designer
+description: "Generate modern, production-ready UI components and pages for exfino, the personal expense tracker. Automatically trigger when the user mentions designing, creating, or redesigning pages/components for exfino (e.g., 'design the dashboard page', 'create a transaction card', 'build a category selector', 'improve the budget page'). Outputs clean, responsive HTML + Vanilla CSS + little JS code that matches exfino's minimalist fintech aesthetic. Always use exfino's design system: dark green branding (#1a472a), neutral backgrounds (#f3f1ed, #eeebe4), minimal icons, card-based layouts, 8-12-16px spacing scale, rounded corners, and soft shadows. Focus on clarity, usability, and consistency with existing exfino design."
 compatibility: "Flask + Vanilla HTML/CSS + little.js"
 ---
 
-# Spendly Frontend UI Designer
+# exfino Frontend UI Designer
 
-A skill for generating production-ready UI components and pages for Spendly, the personal expense tracker application.
+A skill for generating production-ready UI components and pages for exfino, the personal expense tracker application.
 
 ## Design System Reference
 
@@ -82,13 +82,13 @@ A skill for generating production-ready UI components and pages for Spendly, the
 1. **Minimal & Clean:** No unnecessary elements. Every component has a clear purpose.
 2. **Fintech Aesthetic:** Professional, trustworthy, modern. Avoid playful or casual styles.
 3. **Clarity & Usability:** Clear hierarchy, readable text, intuitive actions.
-4. **Consistency:** Match existing Spendly components in style, spacing, and behavior.
+4. **Consistency:** Match existing exfino components in style, spacing, and behavior.
 5. **Responsive:** Works on desktop and mobile without major layout shifts.
 6. **Accessibility:** Good contrast ratios, clear labels, keyboard navigation where applicable.
 
 ## How to Use This Skill
 
-When a user asks to design or build a UI component/page for Spendly:
+When a user asks to design or build a UI component/page for exfino:
 
 1. **Identify what's being requested:** Page (e.g., dashboard, settings), component (e.g., transaction card, budget card), or feature (e.g., expense filter).
 2. **Understand the context:** What data does it show? What actions should users perform? Any constraints mentioned?
@@ -98,8 +98,8 @@ When a user asks to design or build a UI component/page for Spendly:
    - **CSS:** Organized, follows design system, minimal boilerplate
    - **JavaScript (if needed):** Minimal interactivity using little.js or vanilla JS
 
-4. **Follow the design system:** Always use Spendly's colors, spacing, typography, and component patterns.
-5. **Avoid generic UI:** No default Bootstrap/Tailwind look. Make it distinctly Spendly.
+4. **Follow the design system:** Always use exfino's colors, spacing, typography, and component patterns.
+5. **Avoid generic UI:** No default Bootstrap/Tailwind look. Make it distinctly exfino.
 6. **Include comments only where UX/design decisions are non-obvious.**
 
 ## Common Components Reference

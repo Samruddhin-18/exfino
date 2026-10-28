@@ -1,6 +1,6 @@
 import sqlite3
 
-DB_PATH = "spendly.db"
+DB_PATH = "exfino.db"
 
 CATEGORIES = [
     "Food",

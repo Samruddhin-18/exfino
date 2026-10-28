@@ -17,7 +17,7 @@ from database.queries import (
 
 @pytest.fixture
 def temp_db(tmp_path, monkeypatch):
-    db_path = str(tmp_path / "test_spendly.db")
+    db_path = str(tmp_path / "test_exfino.db")
     monkeypatch.setattr(db, "DB_PATH", db_path)
 
     import database.queries as queries
@@ -27,7 +27,7 @@ def temp_db(tmp_path, monkeypatch):
     seed_db()
 
     conn = db.get_db()
-    user_id = conn.execute("SELECT id FROM users WHERE email = ?", ("demo@spendly.com",)).fetchone()["id"]
+    user_id = conn.execute("SELECT id FROM users WHERE email = ?", ("demo@exfino.com",)).fetchone()["id"]
     conn.close()
 
     return user_id
@@ -38,7 +38,7 @@ def empty_user(temp_db):
     conn = db.get_db()
     cursor = conn.execute(
         "INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)",
-        ("New User", "new@spendly.com", "hash"),
+        ("New User", "new@exfino.com", "hash"),
     )
     conn.commit()
     user_id = cursor.lastrowid
@@ -53,7 +53,7 @@ def empty_user(temp_db):
 def test_get_user_by_id_valid(temp_db):
     user = get_user_by_id(temp_db)
     assert user["name"] == "Demo User"
-    assert user["email"] == "demo@spendly.com"
+    assert user["email"] == "demo@exfino.com"
     assert user["member_since"]
 
 
@@ -143,7 +143,7 @@ def test_profile_authenticated(client):
     body = resp.get_data(as_text=True)
 
     assert "Demo User" in body
-    assert "demo@spendly.com" in body
+    assert "demo@exfino.com" in body
     assert "₹" in body
     assert "271.24" in body
     assert "Bills" in body
